@@ -1,15 +1,17 @@
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Solution {
 
     /**
-    * Найдите только уникальные задачи со статусом READING
-    * Решить необходимо в 1 stream.
-    * Правильный ответ: task1, task2, task5
-    */
+     * Найдите только уникальные задачи со статусом READING
+     * Решить необходимо в 1 stream.
+     * Правильный ответ: task1, task2, task5
+     */
 
     public static void main(String[] args) {
         Task task1 = new Task(1, "Read Version Control with Git book", TaskType.READING, LocalDate.of(2015, Month.JULY, 1)).addTag("git").addTag("reading").addTag("books");
@@ -23,7 +25,10 @@ public class Solution {
     }
 
     private static List<Task> allReadingTasks(List<Task> tasks) {
-        return null;
+
+        // Возможно надо точнее ответ дать...
+
+        return tasks.stream().filter(task -> task.getType() == TaskType.READING).distinct().collect(Collectors.toList());
         // Ваш код здесь
     }
 }
