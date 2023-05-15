@@ -3,12 +3,14 @@ import java.time.Month;
 import java.util.Arrays;
 import java.util.List;
 
+import static java.util.Arrays.stream;
+
 public class Solution {
 
     /*
-    * Проверьте, все ли задачи чтения имеют тег books.
-    * Решить необходимо в 1 stream.
-    */
+     * Проверьте, все ли задачи чтения имеют тег books.
+     * Решить необходимо в 1 stream.
+     */
 
     public static void main(String[] args) {
         Task task1 = new Task(1, "Read Version Control with Git book", TaskType.READING, LocalDate.of(2015, Month.JULY, 1)).addTag("git").addTag("reading").addTag("books");
@@ -22,7 +24,9 @@ public class Solution {
     }
 
     private static Boolean allReadingTasks(List<Task> tasks) {
-        return null;
         // Ваш код здесь
+        return tasks.stream()
+                .filter(task -> task.getType() == TaskType.READING)
+                .allMatch(task -> task.getTags().contains("books"));
     }
 }

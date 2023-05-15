@@ -2,6 +2,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class Solution {
@@ -27,7 +28,10 @@ public class Solution {
     }
 
     private static Long allReadingTasks(List<List<Task>> tasks) {
-        return null;
+//        return null;
         // Ваш код здесь
+        return tasks.stream()
+                .filter(task->task.get(tasks.size()).getTags().containsAll(Collections.singleton("books")))
+                .count();
     }
 }
