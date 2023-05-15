@@ -2,15 +2,14 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 public class Solution {
 
     /**
-    *Подсчитайте количество задач имеющих тег books
-    *Решить необходимо в 1 stream.
-    */
+     * Подсчитайте количество задач имеющих тег books
+     * Решить необходимо в 1 stream.
+     */
 
     public static void main(String[] args) {
         Task task1 = new Task(1, "Read Version Control with Git book", TaskType.READING, LocalDate.of(2015, Month.JULY, 1)).addTag("git").addTag("reading").addTag("books");
@@ -30,8 +29,9 @@ public class Solution {
     private static Long allReadingTasks(List<List<Task>> tasks) {
 //        return null;
         // Ваш код здесь
-        return tasks.stream()
-                .filter(task->task.get(tasks.size()).getTags().containsAll(Collections.singleton("books")))
+        return (long)tasks.stream()
+                .flatMap(Collection::stream)
+                .filter(task -> task.getTags().contains("books"))
                 .count();
     }
 }

@@ -26,7 +26,10 @@ public class Solution {
 
     private static List<Task> allReadingTasks(List<Task> tasks) {
 
-        return tasks.stream().filter(task -> task.getType() == TaskType.READING).distinct().collect(Collectors.toList());
+        return tasks.stream()
+                .filter(task -> task.getType() == TaskType.READING)
+                .distinct()
+                .collect(Collectors.toList());
         // Ваш код здесь
     }
 }
